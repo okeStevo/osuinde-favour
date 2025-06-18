@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --default-color: #ffffff;
+            --background-color: #2c3e50;
+            --heading-color: #ffffff;
+            --accent-color: rgb(39, 189, 248);
+            --contrast-color: #ffffff;
+        }
+
+        .header {
+            color: var(--default-color);
+            background-color: var(--background-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            padding: 0 15px;
+            width: 300px;
+            transition: all ease-in-out 0.3s;
+            overflow-y: auto;
+            z-index: 997;
+            border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+        }
+
+        /* Mobile Toggle */
+        .mobile-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 9999;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-toggle:hover {
+            background-color: rgb(39, 189, 248);
+        }
+
+        .header .profile-img img {
+            margin: 15px auto;
+            display: block;
+            width: 120px;
+            border: 8px solid color-mix(in srgb, var(--default-color), transparent 85%);
+        }
+
+        .header .logo {
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .header .logo img {
+            max-height: 32px;
+            margin-right: 8px;
+        }
+
+        .header .logo h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: rgb(39, 189, 248);
+        }
+
+        /* Desktop Layout - Navbar visible, main content has left margin */
+        @media (min-width: 1200px) {
+            .main-content {
+                margin-left: 300px;
+                transition: margin-left 0.3s ease;
+            }
+        }
+
+        /* Mobile Layout - Navbar hidden, no left margin on main content */
+        @media (max-width: 1199px) {
+            .header {
+                left: -100%;
+            }
+            
+            .header.header-show {
+                left: 0;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+                width: 100%;
+            }
+        }
+
+        .navmenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navmenu a {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #a8a9b4;
+            text-align: left;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .navmenu a:hover,
+        .navmenu a.active {
+            color: rgb(39, 189, 248);
+        }
+
+        .navmenu a i {
+            font-size: 1.25rem;
+            margin-right: 0.75rem;
+        }
+        
+        .navmenu button {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #a8a9b4;
+            text-align: left;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .navmenu button:hover,
+        .navmenu button.active {
+            color: rgb(39, 189, 248);
+        }
+
+        .navmenu button i {
+            font-size: 1.25rem;
+            margin-right: 0.75rem;
+        }
+       
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-button {
+            justify-content: space-between !important;
+        }
+
+        .dropdown-content {
+            background-color: #1e2a35;
+            border-radius: 0.5rem;
+            margin: 0 0.5rem 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content.show {
+            display: block !important;
+            max-height: 300px;
+        }
+
+        .dropdown-content ul {
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content li {
+            list-style: none;
+        }
+
+        .dropdown-content a {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            color: #a8a9b4;
+            text-decoration: none;
+            border: none;
+            background: none;
+            width: 100%;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: rgb(39, 189, 248);
+        }
+
+        .dropdown-content a i {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: rgb(39, 189, 248);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #2c3e50;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /*--------------------------------------------------------------
+        # Hero Section
+        --------------------------------------------------------------*/
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('./images/portfolioimg.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            background: rgba(44, 62, 80, 0.7);
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: 64px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            margin: 5px 0 0 0;
+            font-size: 26px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero p span {
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .hero .social-links {
+            margin-top: 25px;
+        }
+
+        .hero .social-links a {
+            font-size: 24px;
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1;
+            margin-right: 20px;
+            transition: 0.3s;
+        }
+
+        .hero .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+        }
+
+        /*--------------------------------------------------------------
+        # Preloader
+        --------------------------------------------------------------*/
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            overflow: hidden;
+            background: var(--background-color);
+            transition: all 0.6s ease-out;
+        }
+
+        #preloader:before {
+            content: "";
+            position: fixed;
+            top: calc(50% - 30px);
+            left: calc(50% - 30px);
+            border: 6px solid #ffffff;
+            border-color: var(--accent-color) transparent var(--accent-color) transparent;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: animate-preloader 1.5s linear infinite;
+        }
+
+        @keyframes animate-preloader {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /*--------------------------------------------------------------
+        # Scroll Top Button
+        --------------------------------------------------------------*/
+        .scroll-top {
+            position: fixed;
+            visibility: hidden;
+            opacity: 0;
+            right: 15px;
+            bottom: -15px;
+            z-index: 99999;
+            background-color: var(--accent-color);
+            width: 44px;
+            height: 44px;
+            border-radius: 50px;
+            transition: all 0.4s;
+        }
+
+        .scroll-top i {
+            font-size: 24px;
+            color: var(--contrast-color);
+            line-height: 0;
+        }
+
+        .scroll-top:hover {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+            color: var(--contrast-color);
+        }
+
+        .scroll-top.active {
+            visibility: visible;
+            opacity: 1;
+            bottom: 15px;
+        }
+
+        /*--------------------------------------------------------------
+        # Disable aos animation delay on mobile devices
+        --------------------------------------------------------------*/
+        @media screen and (max-width: 768px) {
+            [data-aos-delay] {
+                transition-delay: 0 !important;
+            }
+        }
+
+        /*--------------------------------------------------------------
+        # Global Page Titles & Breadcrumbs
+        --------------------------------------------------------------*/
+        .page-title {
+            color: var(--default-color);
+            background-color: var(--background-color);
+            padding: 25px 0;
+            position: relative;
+        }
+
+        .page-title h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .page-title .breadcrumbs ol {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .page-title .breadcrumbs ol li+li {
+            padding-left: 10px;
+        }
+
+        .page-title .breadcrumbs ol li+li::before {
+            content: "/";
+            display: inline-block;
+            padding-right: 10px;
+            color: color-mix(in srgb, var(--default-color), transparent 70%);
+        }
+
+        /*--------------------------------------------------------------
+        # Global Sections
+        --------------------------------------------------------------*/
+        section,
+        .section {
+            color: var(--default-color);
+            background-color: var(--background-color);
+            padding: 30px 0;
+            overflow: clip;
+        }
+
+        /*--------------------------------------------------------------
+        # Global Section Titles
+        --------------------------------------------------------------*/
+        .section-title h2 {
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            left: 0;
+            bottom: 0;
+        }
+
+        .section-title p {
+            margin-bottom: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Content Sections Styling */
+        .content-section {
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1199px) {
+            .content-section {
+                padding: 0 15px;
+            }
+        }
+
+        .testimonials-section {
+            padding: 80px 20px;
+            padding-bottom: 0;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .testimonials-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .testimonials-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .quote-content {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .quote-mark {
+            font-size: 3rem;
+            color: #3498db;
+            font-family: Georgia, serif;
+            position: absolute;
+            top: -10px;
+            left: -5px;
+        }
+
+        .quote-mark.end-quote {
+            bottom: -30px;
+            right: -5px;
+            top: auto;
+            left: auto;
+        }
+
+        .quote-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #495057;
+            font-style: italic;
+            margin: 0 20px;
+            text-align: left;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e9ecef;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0 0 5px 0;
+        }
+
+        .author-role {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin: 0;
+        }
+
+        .testimonials-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #dee2e6;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #3498db;
+        }
+
+        .dot:hover {
+            background-color: #6c757d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .testimonials-section {
+                padding: 60px 15px;
+            }
+
+            .testimonials-title {
+                font-size: 2rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .testimonial-card {
+                padding: 25px 20px;
+            }
+
+            .quote-text {
+                margin: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonials-title {
+                font-size: 1.75rem;
+            }
+
+            .testimonials-subtitle {
+                font-size: 1rem;
+            }
+
+            .testimonial-card {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="background-color: #2c3e50; color: white;" class="header d-flex flex-column">
+        <div class="profile-img">
+            <img src="images/FAVOUR.png" style="height: 150px; width: 150px; object-fit: contain; border: 3px solid #e9ecef;"
+                alt="" class="img-fluid text-center rounded-circle">
+        </div>
+
+        <a href="index.html" style="text-decoration: none;" class="logo d-flex align-items-center justify-content-center">
+            <h1 style="color: rgb(39, 189, 248);" class="sitename">Osuinde Favour</h1>
+        </a>
+
+        <div class="social-links text-center">
+            <a href="https://x.com/OsuindeU?t=OfV1SykV1qNTX7SlIXK4RQ&s=09" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="mailto:osuindefavour@gmail.com?subject=Inquiry&body=Hello" class="gmail"><i class="bi bi-mailbox"></i></a>
+            <a href="https://wa.me/+2348087309512" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://github.com/Osuindecodes" class="google-plus"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/favour-osuinde-50a211287" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="navmenu">
+            <ul>
+                <li><button class="nav-btn active" data-target="hero"><i class="bi bi-house"></i>Home</button></li>
+                <li><a href="#about" class="nav-btn" data-target="about"><i class="bi bi-person"></i>About</a></li>
+                <li><a href="#resume" class="nav-btn" data-target="resume"><i class="bi bi-file-earmark-text"></i>Resume</a></li>
+                <li><a href="#projects" class="nav-btn" data-target="projects"><i class="bi bi-images"></i>Projects</a></li>
+                <li><a href="#services" class="nav-btn" data-target="services"><i class="bi bi-hdd-stack"></i>Services</a></li>
+                <li><a href="#contact" class="nav-btn" data-target="contact"><i class="bi bi-envelope"></i>Contact</a></li>
+                
+                <!-- Dropdown -->
+                <li class="dropdown">
+                    <button class="dropdown-button" id="dropdownBtn">
+                        <span><i class="bi bi-menu-button"></i>More</span>
+                        <i class="bi bi-chevron-down" id="dropdownIcon"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <ul>
+                            <li><a href="#projects" data-target="projects"><i class="bi bi-collection"></i>Portfolio Gallery</a></li>
+                            <li><a href="#testimonial" data-target="testimonials"><i class="bi bi-chat-quote"></i>Client Testimonials</a></li>
+                            <li><a href="#skill" data-target="skills"><i class="bi bi-gear"></i>Skills & Expertise</a></li>
+                            <li><a href="https://eu.docworkspace.com/d/sICHxusLfAYHsxcIG?sa=601.1074" target="_blank"><i class="bi bi-award"></i>Certifications</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile Toggle Button -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list" id="toggleIcon"></i>
+    </button>
+
+    <main class="main-content">
+        <section id="hero" class="hero section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <h2>Osuinde Favour</h2>
+                <p>I'm a <span class="typed" data-typed-items="Designer, Developer, Freelancer,">Developer</span><span
+                        class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+            </div>
+        </section>
+
+        <div class="content-section">
+            <div class="container">
+                <h3 id="about"
+                    style="color: rgb(39, 189, 248); text-decoration: underline; text-decoration-color:#2c3e50; margin-top: 5px;">
+                    About</h3>
+                <p>I'm <strong>Osuinde Favour</strong>, a versatile professional specializing in Frontend development. With
+                    a sharp eye for detail and a passion for crafting engaging digital experiences, I bring a unique
+                    combination of technical expertise and strategic development to every project I undertake.</p>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/FAVOUR.png" class="img-fluid mt-1"
+                            style="width: 270px; border-right:30px; border-radius: 15px; border-color: red">
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Frontend Developer</h4>
+                        <p>I help companies build fast, responsive, and visually appealing web interfaces that improve user
+                            experience and drive engagement.</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="abouticon" class="d-flex"><i class="bi bi-caret-right me-2"
+                                            style="color: rgb(39, 189, 248);"></i>
+                                        <p> <strong>Age:</strong><em> 19</em></p>
+                                    </div>
+                                    <div id="abouticon" class="d-flex"> <i class="bi bi-caret-right me-2"
+                                            style="color: rgb(39, 189, 248);"></i>
+                                        <p> <strong>City:</strong><em> Lagos</em></p>
+                                    </div>
+                                    <div id="abouticon" class="d-flex"><i class="bi bi-caret-right me-2"
+                                            style="color:rgb(39, 189, 248);"></i>
+                                        <p> <strong>Freelance:</strong><em> Available</em></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="abouticon" class="d-flex"><i class="bi bi-caret-right me-2"
+                                            style="color:rgb(39, 189, 248);"></i>
+                                        <p> <strong>Birthday:</strong> <em>May 25, 2006.</em></p>
+                                    </div>
+                                    <div id="abouticon" class="d-flex"><i class="bi bi-caret-right me-2"
+                                            style="color:rgb(39, 189, 248);"></i>
+                                        <p> <strong>Phone:</strong> <em>+234 816 844 5924</em></p>
+                                    </div>
+                                    <div id="abouticon" class="d-flex"><i class="bi bi-caret-right me-2"
+                                            style="color:rgb(39, 189, 248);"></i>
+                                        <p> <strong>Email:</strong><em> osuindefavour@gmail.com</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <ul>
+                            <li>
+                                I turn designs (Figma, Adobe XD, etc.) into functional, pixel-perfect, responsive web
+                                interfaces.
+                            </li>
+                            <br>
+                            <li>
+                                I ensure the website works and looks great on all browsers and devices.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="container p-4" style="background-color: #2c3e50; color: white;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="d-flex">
+                            <div id="ddd"><i class="bi bi-emoji-smile mt-4 me-3" style="font-size: 40px; color:white;"></i>
+                            </div>
+                            <div>
+                                <h3>56</h3>
+                                <p style="font-size: small;"><b>Happy Clients</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex">
+                            <div><i class="bi bi-file-earmark-text mt-4 me-3" style="font-size:40px; color:white;"></i>
+                            </div>
+                            <div>
+                                <h3>09</h3>
+                                <p style="font-size: small;"><b>Projects</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex">
+                            <div><i class="bi bi-headset mt-4 me-3" style="font-size: 40px; color:white;"></i>
+                            </div>
+                            <div>
+                                <h3>359</h3>
+                                <p style="font-size: small;"><b>Hours of Support</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex">
+                            <div><i class="fa-regular fa-user mt-2 me-3" style="font-size: 40px; color:white;"></i>
+                            </div>
+                            <div>
+                                <h3>12</h3>
+                                <p style="font-size: small;"><b>Testimonials</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container bg-light" id="skill">
+                <br>
+                <h3 style="color: rgb(39, 189, 248);text-decoration: underline;text-decoration-color: #2c3e50;;">Skills</h3>
+                <p><em>I am commited to ensuring your satisfaction!!</em></p>
+                <br>
+                <div class="container" style="background-color: rgb(39, 189, 248);">
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            HTML
+                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="100"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 100%; background-color:#2c3e50;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            JAVASCRIPT
+                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 75%; background-color:#2c3e50;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            CSS
+                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 75%; background-color:#2c3e50;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            TAILWIND
+                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 75%; background-color:#2c3e50;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            BOOTSTRAP
+                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="100"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 100%; background-color: #2c3e50;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            COREL DRAW
+                            <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="100"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 100%; background-color:#2c3e50;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="container">
+                <div>
+                    <h3 id="resume"
+                        style="color: rgb(39, 189, 248);text-decoration: underline;text-decoration-color: #2c3e50;;">Resume
+                    </h3>
+                    <p class="mb-3">I am a software developer with 2 years
+                        experience on the field.
+                        I have built very much responsive and
+                        interactive websites with the help of Frontend
+                        developer tools, I look forward to improve my
+                        skills on the field.</p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="mb-3">SUMMARY</h5>
+                                <p><strong><em>OSUINDE FAVOUR</em></strong></p>
+                                <P>I am a Frontend developer with 2 years
+                                    experience on the field.
+                                    I have built very much responsive and
+                                    interactive websites with the help of Frontend
+                                    developer tools(and frameworks), I look forward to improve my
+                                    skills on the field.
+                                </P>
+                                <ul>
+                                    <li>Ipaja Lagos,Nigeria.</li>
+                                    <li>+234 816 844 5924</li>
+                                    <li><a style="text-decoration: none; color: rgb(39, 189, 248); font-weight: 600;"
+                                            href="mailto:osuindefavour@gmail.com?subject=Job%20Inquiry%20-%20Frontend%20Developer&body=Hello%20Favour,%0A%0AI%20am%20interested%20in%20discussing%20potential%20opportunities%20with%20you.%0A%0ABest%20regards">osuindefavour@gmail.com</a> (Send a mail.)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="mb-3">EDUCATION</h5>
+                                <p><strong><em>Bsc. Computer Science</em></strong></p>
+                                <P>2022-present</P>
+                                <p>University of Port Harcout, Nigeria.</p>
+
+                                <p><strong><em>Full Stack Developer</em></strong></p>
+                                <P>2025-present</P>
+                                <p>National Institute of Information Technology, Nigeria.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section id="projects" class="section" style="display: block;">
+                <div class="container">
+                    <h3 class="section-title3"
+                        style="color: rgb(39, 189, 248);text-decoration: underline;text-decoration-color: #2c3e50;">Projects
+                    </h3>
+                    <p class="mb-4" style="color: white;">Showcase of my recent work and achievements.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="card mb-3">
+                            <div>
+                                <img src="images/CAKES3.png" class="img-fluid" alt="">
+                            </div>
+                            <h5 style="font-weight: 600; margin-bottom: 0.5rem;">&nbsp; Eatery Platform</h5>
+                            <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">&nbsp; A responsive
+                                 eatery website built with JavaScript and modern CSS frameworks.</p>
+                            <a href="https://rettabakes.vercel.app/"
+                                style="color: rgb(39, 189, 248); text-decoration: none; font-weight: 600; margin-bottom: 5px;">&nbsp;
+                                View Project →</a>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div>
+                                <img src="images/HOSPITAL 2.png" class="img-fluid" alt="">
+                            </div>
+                            <h5 style="font-weight: 600; margin-bottom: 0.5rem;">&nbsp; Medical Website</h5>
+                            <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">&nbsp; A modern Medical
+                                website showcasing creative design and smooth animations.</p>
+                            <a href="https://rettabakes.vercel.app/"
+                                style="color: rgb(39, 189, 248); text-decoration: none; font-weight: 600;margin-bottom: 5px;">&nbsp;
+                                View Project →</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <div id="services" class="container">
+                <div class="ms-2">
+                    <h3 style="color: rgb(39, 189, 248); text-decoration: underline;text-decoration-color: #2c3e50;;">
+                        Services
+                    </h3>
+                    <p>As a frontend developer, I specialize in building fast, user-friendly web interfaces using modern
+                        tools like JavaScript and Tailwind. I translate designs into responsive, interactive components that
+                        not only look great but also perform well across devices. My goal is to help your users enjoy a
+                        seamless experience that drives engagement and supports your business goals.</p>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 p-2" data-aos="zoom-in-right">
+                            <div class="card" style="background-color:#2c3e50; color: white;">
+                                <div class="card-body">
+                                    <i class="bi bi-display" style="font-size: 30px;"></i>
+                                    <h5 class="card-title">Building User Interface.</h5>
+                                    <p class="card-text mt-2"> This service includes developing responsive, accessible, and
+                                        visually compelling UIs, translating design concepts into fully functional
+                                        components that enhance user experience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-2" data-aos="zoom-in-right">
+                            <div class="card" style="background-color: #2c3e50;  color: white;">
+                                <div class="card-body">
+                                    <i class="bi bi-tools" style="font-size: 30px;"></i>
+                                    <h5 class="card-title">Testing and Debugging.</h5>
+                                    <p class="card-text mt-2"> I ensure product stability and reliability by writing unit
+                                        and integration tests, thorough debugging, and utilizing tools such as Jest,
+                                        Cypress, and browser dev tools to identify and resolve issues efficiently.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-2" data-aos="zoom-in-right">
+                            <div class="card" style="background-color:#2c3e50;  color: white;">
+                                <div class="card-body">
+                                    <i class="bi bi-code-slash" style="font-size: 30px;"></i>
+                                    <h5 class="card-title">Collaborating with Back-End Developers.</h5>
+                                    <p class="card-text mt-2"> I work closely with back-end developers to integrate APIs and
+                                        services, ensuring data integrity and seamless interaction between front-end and
+                                        server-side functionality.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 p-2" data-aos="zoom-in-right">
+                                <div class="card" style="background-color:#2c3e50;  color: white;">
+                                    <div class="card-body">
+                                        <i class="bi bi-code-slash" style="font-size: 30px;"></i>
+                                        <h5 class="card-title">Developing new websites or web applications.</h5>
+                                        <p class="card-text mt-2"> This services includes building fast, user-friendly web
+                                            interfaces using modern tools like React and Tailwind. I translate designs into
+                                            responsive, interactive components that not only look great but also perform
+                                            well across devices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-2" data-aos="zoom-in-right">
+                                <div class="card" style="background-color:#2c3e50;  color: white;">
+                                    <div class="card-body">
+                                        <i class="bi bi-laptop" style="font-size: 30px;"></i>
+                                        <h5 class="card-title">Redesigning and updating existing solutions.</h5>
+                                        <p class="card-text mt-2 mb-4"> I improve legacy applications and outdated user
+                                            interfaces by implementing modern design standards, optimizing code for
+                                            performance, and enhancing overall usability and accessibility.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-2" data-aos="zoom-in-right">
+                                <div class="card" style="background-color:#2c3e50;  color: white;">
+                                    <div class="card-body">
+                                        <i class="bi bi-tools" style="font-size: 30px;"></i>
+                                        <h5 class="card-title">Ongoing maintenance and updates.</h5>
+                                        <p class="card-text mt-2 mb-5"> This services include long-term support by fixing
+                                            bugs, implementing feature updates, optimizing performance, and ensuring
+                                            cross-browser and device compatibility.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-section" id="testimonial">
+                    <div class="testimonials-container">
+                        <h2 class="testimonials-title">Testimonials</h2>
+                        <p class="testimonials-subtitle">
+                            <em>I am commited to ensuring your satisfaction!!</em>
+                        </p>
+
+                        <div class="testimonials-grid">
+                            <div class="testimonial-card">
+                                <div class="quote-content">
+                                    <span class="quote-mark">"</span>
+                                    <p class="quote-text">Thanks to Osuinde Favour, our new website runs flawlessly across
+                                        devices and browsers. His commitment to accessibility and performance is truly
+                                        commendable.</p>
+                                    <span class="quote-mark end-quote">"</span>
+                                </div>
+                                <div class="testimonial-author">
+
+                                    <div class="author-info text-center">
+                                        <h4 class="author-name">Lauretta</h4>
+                                        <p class="author-role">Entrepreneur</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <div class="quote-content">
+                                    <span class="quote-mark">"</span>
+                                    <p class="quote-text">We appreciated Favour's responsiveness and flexibility throughout
+                                        our project. They adapted to changing requirements without sacrificing quality or
+                                        deadlines.</p>
+                                    <span class="quote-mark end-quote">"</span>
+                                </div>
+                                <div class="testimonial-author">
+
+                                    <div class="author-info text-center">
+                                        <h4 class="author-name">Clement Jason</h4>
+                                        <p class="author-role">Entrepreneur</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <div class="quote-content">
+                                    <span class="quote-mark">"</span>
+                                    <p class="quote-text">I highly recommend Osuinde Favour for any front-end development
+                                        work. He is proactive, efficient, and always willing to go the extra mile to
+                                        optimize performance and usability.</p>
+                                    <span class="quote-mark end-quote">"</span>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-info text-center">
+                                        <h4 class="author-name">Odedara Daniel</h4>
+                                        <p class="author-role">CEO Epd Gadgets</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <div class="quote-content">
+                                    <span class="quote-mark">"</span>
+                                    <p class="quote-text">Osuinde Favour consistently delivers exceptional web solutions
+                                        that exceed expectations. His attention to detail, coding expertise, and ability to
+                                        translate ideas into a seamless user experience have been invaluable.</p>
+                                    <span class="quote-mark end-quote">"</span>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-info text-center">
+                                        <h4 class="author-name">Alabi</h4>
+                                        <p class="author-role">CEO Alabian Solutions</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <div class="quote-content">
+                                    <span class="quote-mark">"</span>
+                                    <p class="quote-text">Working with Favour was a game-changer for our project. They
+                                        brought creativity, technical skill, and clear communication to every phase,
+                                        ensuring we launched on time and with outstanding quality.</p>
+                                    <span class="quote-mark end-quote">"</span>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-info text-center">
+                                        <h4 class="author-name">Oke Stephen</h4>
+                                        <p class="author-role">Software Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <div class="quote-content">
+                                    <span class="quote-mark">"</span>
+                                    <p class="quote-text">Favour's coding standards and best practices have set a new
+                                        benchmark for our development team. He is both a skilled developer and a great
+                                        mentor.</p>
+                                    <span class="quote-mark end-quote">"</span>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="author-info text-center">
+                                        <h4 class="author-name">Alori Daniel</h4>
+                                        <p class="author-role">Software Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div>
+                        <h3 id="contact"
+                            style="color: rgb(39, 189, 248); text-decoration: underline;text-decoration-color: #2c3e50;;">
+                            Contact</h3>
+                        <p><em>I am commited to ensuring your satisfaction!!</em></p>
+                    </div>
+                    <div class="row">
+                        <div class=col-md-4 data-aos="zoom-in-right">
+                            <div class="card shadow p-3 mb-5">
+                                <div class="d-flex">
+                                    <div>
+                                        <i style="font-size: 30px; color:  #2c3e50;" class="bi bi-geo-alt me-3 "></i>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: rgb(39, 189, 248);">Address</h5>
+                                        <p>Ipaja, Lagos Nigeria.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div>
+                                        <i style="font-size: 30px; color:  #2c3e50;" class=" bi bi-telephone me-3 "></i>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: rgb(39, 189, 248);">Call Me</h5>
+                                        <p>+234 816 844 5924</p>
+                                    </div>
+                                </div>
+                                <div class=" d-flex">
+                                    <div>
+                                        <i style="font-size: 30px; color: #2c3e50;" class="bi bi-envelope me-3 "></i>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: rgb(39, 189, 248);">Send a Mail</h5>
+                                        <a style="color: #2c3e50;"
+                                            href="mailto:osuindefavour@gmail.com?subject=Inquiry&body=Hello">Click Me</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.336726822914!2d3.2703750736504005!3d6.605012322213509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b906407f391cd%3A0xcbee8706ab9b850f!2sIpaja-Ayobo%20Rd%2C%20Ipaja%2C%20Ipaja%20North%20102213%2C%20Lagos!5e0!3m2!1sen!2sng!4v1748827993626!5m2!1sen!2sng"
+                                    height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                        <div class=col-md-8 data-aos="zoom-in-right">
+                            <div class="card shadow p-3 mb-5">
+                                <div class="">
+                                    <div>
+                                        <strong class="mb-1"> Name</strong> <input type="text"
+                                            placeholder=" Enter your Name" required
+                                            style="width: 100%;margin-bottom: 13px;">
+                                    </div>
+                                    <div>
+                                        <strong class="mb-1"> Email</strong> <input type="text"
+                                            placeholder=" Enter your Email" required
+                                            style="width: 100%; margin-bottom: 13px;">
+                                    </div>
+                                </div>
+                                <strong class="mb-1">Subject</strong>
+                                <input type="text" placeholder=" Title of the message" style="margin-bottom: 13px;">
+                                <strong class="mb-1">Message</strong>
+                                <textarea name="comment" style="height: 150px;" id=""
+                                    placeholder=" Drop a message here...."></textarea>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 text-center" data-aos="zoom-in-right">
+                                        <button id="sendmsgbtn"
+                                            style=" background-color: rgb(39, 189, 248); color: white; border: none; padding: 4px; width: 200px; border-radius: 5px;"><strong>Send
+                                                Message</strong></button>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="bg-light">
+                        <div class="text-center p-4">
+                            <p>
+                                Developed by: <br>
+                                <em><strong>OSUINDE FAVOUR</strong></em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile Toggle Functionality
+        const mobileToggle = document.getElementById('mobileToggle');
+        const header = document.querySelector('.header');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        mobileToggle.addEventListener('click', function() {
+            header.classList.toggle('header-show');
+            
+            // Change icon based on state
+            if (header.classList.contains('header-show')) {
+                toggleIcon.className = 'bi bi-x';
+            } else {
+                toggleIcon.className = 'bi bi-list';
+            }
+        });
+
+        // Close mobile menu when clicking on MAIN nav links (not dropdown items)
+        const mainNavLinks = document.querySelectorAll('.navmenu > ul > li > a, .navmenu > ul > li > button:not(.dropdown-button)');
+        mainNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 1199) {
+                    header.classList.remove('header-show');
+                    toggleIcon.className = 'bi bi-list';
+                }
+            });
+        });
+
+        // Dropdown Functionality
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownContent = document.getElementById('dropdownContent');
+        const dropdownIcon = document.getElementById('dropdownIcon');
+
+        dropdownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            dropdownContent.classList.toggle('show');
+            
+            // Rotate the chevron icon
+            if (dropdownContent.classList.contains('show')) {
+                dropdownIcon.className = 'bi bi-chevron-up';
+            } else {
+                dropdownIcon.className = 'bi bi-chevron-down';
+            }
+        });
+
+        // Close dropdown when clicking outside (but not when clicking dropdown items)
+        document.addEventListener('click', function(e) {
+            if (!dropdownBtn.contains(e.target) && !dropdownContent.contains(e.target)) {
+                dropdownContent.classList.remove('show');
+                dropdownIcon.className = 'bi bi-chevron-down';
+            }
+        });
+
+        // Handle dropdown item clicks - close dropdown but keep mobile menu open
+        const dropdownItems = dropdownContent.querySelectorAll('a');
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Close the dropdown
+                dropdownContent.classList.remove('show');
+                dropdownIcon.className = 'bi bi-chevron-down';
+                
+                // Only close mobile menu if it's an external link
+                if (this.getAttribute('target') === '_blank') {
+                    if (window.innerWidth <= 1199) {
+                        header.classList.remove('header-show');
+                        toggleIcon.className = 'bi bi-list';
+                    }
+                }
+                // For internal links (#projects, #testimonial, etc.), keep mobile menu open
+            });
+        });
+
+        // Send Message Button
+        document.getElementById("sendmsgbtn").addEventListener("click", function () {
+            alert("Your message has been sent successfully!");
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1199) {
+                header.classList.remove('header-show');
+                toggleIcon.className = 'bi bi-list';
+                dropdownContent.classList.remove('show');
+                dropdownIcon.className = 'bi bi-chevron-down';
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
